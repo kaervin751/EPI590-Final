@@ -2,7 +2,7 @@ library(tidyverse)
 library(here)
 library(gtsummary)
 
-medal_cols <- c("name", "sex", "age", "height", "weight", "team", "NOC", "games",
+medal_cols <- c("id", "name", "sex", "age", "height", "weight", "team", "NOC", "games",
 								"year", "season", "city", "sport", "event", "medal")
 medals <- read_csv(here::here("data", "raw","athlete_events.csv"),
 									 skip = 1, col_names = medal_cols)
@@ -10,7 +10,7 @@ keep.variables <- c("name", "sex", "height", "weight", "NOC", "season", "sport",
 medals2 <- medals[1:12000, keep.variables]
 
 tbl_summary(
-	medals2,
+	medals,
 	by = sex,
 	include = c(NOC, season, height, weight),
 	label = list(
