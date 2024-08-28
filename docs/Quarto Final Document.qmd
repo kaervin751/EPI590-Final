@@ -25,7 +25,7 @@ medals <- read_csv(here::here("data", "raw","athlete_events.csv"),
 **Question 1** 
 Creating a descriptive Table 1
 ```{r}
-#| label: tbl_one
+#| label: tbl-one
 #| tbl-cap: "Descriptive Table"
 tbl_summary(
 	medals,
@@ -45,3 +45,5 @@ tbl_summary(
 	modify_footnote(update = everything() ~ NA)|>
 	modify_header(label = "**Variable**", p.value = "**P**")
 ```
+
+@tbl-one is a descriptive table giving the distribution of countries, height, and weight of Olympic Athletes separated by sex and with a total column. 
