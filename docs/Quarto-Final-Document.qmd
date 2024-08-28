@@ -22,13 +22,14 @@ medals <- read_csv(here::here("data", "raw","athlete_events.csv"),
 									 skip = 1, col_names = medal_cols)
 ```
 
-**Question 1** 
+**Question 1**
 
 Creating a descriptive Table 1
+
 ```{r}
 #| label: tbl-one
 #| tbl-cap: "Descriptive Table"
-tbl_summary(
+table1 <- tbl_summary(
 	medals,
 	by = sex,
 	include = c(NOC, season, height, weight),
@@ -45,16 +46,17 @@ tbl_summary(
 	bold_labels()|>
 	modify_footnote(update = everything() ~ NA)|>
 	modify_header(label = "**Variable**", p.value = "**P**")
+table1
 ```
 
-`r inline_text(table1, variable = "weight", column = "stat_1")`
+@tbl-one is a descriptive table giving the distribution of countries, height, and weight of Olympic Athletes separated by sex and with a total column.
 
-@tbl-one is a descriptive table giving the distribution of countries, height, and weight of Olympic Athletes separated by sex and with a total column. 
-
+The mean (standard deviation) of female Olympians is `r inline_text(table1, variable = "weight", column = "stat_1")` centimeters.
 
 **Question 2**
 
 Fitting a regression model and creating the table
+
 ```{r}
 #| label: tbl-two
 #| tbl-cap: "Regression Table"
@@ -67,6 +69,7 @@ tbl_regression(
 **Question 3**
 
 Creating a histogram and adding a chance to show the mean and standard deviation.
+
 ```{r}
 #|label: fig-one
 #|fig-cap: "A histogram showing the distribution of heights of Olympic athletes, both male and female"
@@ -84,6 +87,7 @@ The mean height showed by the mean function is `r meanheight` in centimeters. Th
 **Question 4**
 
 Creating and using my function to find the mean of height or weight, depending on what you set to x.
+
 ```{r}
 x <- medals$height
 
@@ -95,5 +99,4 @@ new_mean <- function(x){
 new_mean(x)
 ```
 
-I understand this is similar to what we did in class, but I did have to add to it to make sure the NA in the data set were not included. 
-
+I understand this is similar to what we did in class, but I did have to add to it to make sure the NA in the data set were not included.
