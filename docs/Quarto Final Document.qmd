@@ -26,7 +26,6 @@ medals <- read_csv(here::here("data", "raw","athlete_events.csv"),
 Creating a descriptive Table 1
 ```{r}
 #| label: tbl-one
-#| tbl-cap: "Descriptive Table"
 tbl_summary(
 	medals,
 	by = sex,
@@ -43,7 +42,22 @@ tbl_summary(
 	add_overall(col_label = "**Total**|>")|>
 	bold_labels()|>
 	modify_footnote(update = everything() ~ NA)|>
-	modify_header(label = "**Variable**", p.value = "**P**")
+	modify_header(label = "**Variable**", p.value = "**P**")|> 
+	modify_caption("**Descriptive Table**")
 ```
 
 @tbl-one is a descriptive table giving the distribution of countries, height, and weight of Olympic Athletes separated by sex and with a total column. 
+
+
+**Question 2**
+Fitting a regression model and creating the table
+```{r}
+#| label: tbl-two
+linear_mod <- lm(age ~ height + weight, data = medals)
+tbl_regression(
+	linear_mod,
+	intercept = TRUE)|>
+modify_caption( "**Regression Table**")
+```
+
+
