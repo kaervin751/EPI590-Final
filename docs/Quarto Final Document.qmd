@@ -62,4 +62,19 @@ tbl_regression(
 	intercept = TRUE)
 ```
 
+**Question 3**
 
+Creating a histogram and adding a chance to show the mean and standard deviation.
+```{r}
+#|label: fig-one
+#|fig-cap: "A histogram showing the distribution of heights of Olympic athletes, both male and female"
+hist(medals$height,
+		 main = "Frequency of height of Olympians",
+		 xlab = "Height in cm",
+		 ylab = "Frequency"
+		 )
+meanheight <- mean(medals$height, na.rm = TRUE)
+stddevheight <- sd(medals$height, na.rm = TRUE)
+```
+
+The mean height showed by the mean function is `r meanheight` in centimeters. The standard deviation is `r stddevheight`.
