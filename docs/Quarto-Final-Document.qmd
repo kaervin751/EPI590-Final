@@ -82,6 +82,7 @@ meanheight <- mean(medals$height, na.rm = TRUE)
 stddevheight <- sd(medals$height, na.rm = TRUE)
 ```
 
+@fig-one is a histogram showing the distribution of height frequency of Olympians both male and female combined. 
 The mean height showed by the mean function is `r meanheight` in centimeters. The standard deviation is `r stddevheight`.
 
 **Question 4**
@@ -89,6 +90,7 @@ The mean height showed by the mean function is `r meanheight` in centimeters. Th
 Creating and using my function to find the mean of height or weight, depending on what you set to x.
 
 ```{r}
+#|label: new-mean
 x <- medals$height
 
 new_mean <- function(x){
