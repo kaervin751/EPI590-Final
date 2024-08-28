@@ -47,6 +47,8 @@ tbl_summary(
 	modify_header(label = "**Variable**", p.value = "**P**")
 ```
 
+`r inline_text(table1, variable = "weight", column = "stat_1")`
+
 @tbl-one is a descriptive table giving the distribution of countries, height, and weight of Olympic Athletes separated by sex and with a total column. 
 
 
@@ -78,3 +80,20 @@ stddevheight <- sd(medals$height, na.rm = TRUE)
 ```
 
 The mean height showed by the mean function is `r meanheight` in centimeters. The standard deviation is `r stddevheight`.
+
+**Question 4**
+
+Creating and using my function to find the mean of height or weight, depending on what you set to x.
+```{r}
+x <- medals$height
+
+new_mean <- function(x){
+	n <- length(na.omit(x))
+	mean_val <- sum(x, na.rm = TRUE)/n
+	return(mean_val)}
+
+new_mean(x)
+```
+
+I understand this is similar to what we did in class, but I did have to add to it to make sure the NA in the data set were not included. 
+
