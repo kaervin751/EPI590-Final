@@ -7,6 +7,7 @@ medal_cols <- c("id", "name", "sex", "age", "height", "weight", "team", "NOC", "
 medals <- read_csv(here::here("data", "raw","athlete_events.csv"),
 									 skip = 1, col_names = medal_cols)
 
+#Question 1
 tbl_summary(
 	medals,
 	by = sex,
@@ -25,4 +26,27 @@ tbl_summary(
 	modify_footnote(update = everything() ~ NA)|>
 	modify_header(label = "**Variable**", p.value = "**P**")
 
+#Question 2
+linear_mod <- lm(age ~ height + weight, data = medals)
+tbl_regression(
+	linear_mod,
+	intercept = TRUE)
 
+#creating a histogram
+hist(medals$height,
+		 main = "Frequency of height of olympians",
+		 xlab = "Height in cm",
+		 ylab = "Frequency"
+		 )
+
+#Question 4 - write a function
+x <- medals$height
+
+new_mean <- function(x){
+	n <- length(na.omit(x))
+	mean_val <- sum(x, na.rm = TRUE)/n
+	return(mean_val)}
+
+new_mean(x)
+
+mean(medals$height, na.rm=TRUE)
