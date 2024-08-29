@@ -58,6 +58,13 @@ new_mean <- function(x){
 	mean_val <- sum(x, na.rm = TRUE)/n
 	return(mean_val)}
 
+new_dev <- function(x){
+	output <- sd(x, na.rm=TRUE)
+	return(output)
+}
+
 new_mean(x)
+new_dev(x)
 
 mean(medals$height, na.rm=TRUE)
+sd(medals$height, na.rm=TRUE)
