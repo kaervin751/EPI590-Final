@@ -109,4 +109,4 @@ new_mean(x)
 new_dev(x)
 ```
 
-I understand this is similar to what we did in class, but I did have to add to it to make sure the NA in the data set were not included.
+I understand this is similar to what we did in class, but I did have to add to it to make sure the NA in the data set were not included. I also added a standard deviation function just in case. 
