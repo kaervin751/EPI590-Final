@@ -10,6 +10,8 @@ execute:
 
 ## R Final Project - Kourtney Ervin
 
+I have chosen to use the *RGriffin Kaggle dataset: 120 years of Olympic history: athletes and results*. This dataset contains descriptive traits of Olympic athletes including their event, country represented, and medal achieved from the 1896 Olympics in Athens to the Rio 2016 Olympics. Although it only includes the people who medaled, I thought this would be an interesting set to look at just because of 2024 being an Olympic year, as well as the first year that the number of female and male athletes were equal. 
+
 ```{r}
 #| label: Reading in Data
 library(tidyverse)
@@ -22,7 +24,7 @@ medals <- read_csv(here::here("data", "raw","athlete_events.csv"),
 									 skip = 1, col_names = medal_cols)
 ```
 
-**Question 1**
+**Task 1**
 
 Creating a descriptive Table 1
 
@@ -51,9 +53,9 @@ table1
 
 @tbl-one is a descriptive table giving the distribution of countries, height, and weight of Olympic Athletes separated by sex and with a total column.
 
-The mean (standard deviation) of female Olympians is `r inline_text(table1, variable = "weight", column = "stat_1")` centimeters.
+The mean (standard deviation) weight of female Olympians is `r inline_text(table1, variable = "weight", column = "stat_1")` kg.
 
-**Question 2**
+**Task 2**
 
 Fitting a regression model and creating the table
 
@@ -66,7 +68,7 @@ tbl_regression(
 	intercept = TRUE)
 ```
 
-**Question 3**
+**Task 3**
 
 Creating a histogram and adding a chance to show the mean and standard deviation.
 
@@ -85,9 +87,9 @@ stddevheight <- sd(medals$height, na.rm = TRUE)
 @fig-one is a histogram showing the distribution of height frequency of Olympians both male and female combined. 
 The mean height showed by the mean function is `r meanheight` in centimeters. The standard deviation is `r stddevheight`.
 
-**Question 4**
+**Task 4**
 
-Creating and using my function to find the mean of height or weight, depending on what you set to x.
+Creating and using my function to find the mean and standard deviation of height or weight, depending on what you set to x.
 
 ```{r}
 #|label: new-mean
@@ -104,6 +106,7 @@ new_dev <- function(x){
 }
 
 new_mean(x)
+new_dev(x)
 ```
 
 I understand this is similar to what we did in class, but I did have to add to it to make sure the NA in the data set were not included.
